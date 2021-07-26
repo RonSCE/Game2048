@@ -2,6 +2,8 @@ package com.codegym.games.game2048;
 
 import com.codegym.engine.cell.*;
 
+import java.util.Arrays;
+
 public class Game2048 extends Game {
     private static final int SIDE = 4;
     private int[][] gameField = new int[SIDE][SIDE]; // Stores the state of the game in a matrix. 0 value = empty cell.
@@ -16,13 +18,13 @@ public class Game2048 extends Game {
     private void createGame() {
         createNewNumber();
         createNewNumber();
+
     }
 
     private void drawScene() {
         for (int row = 0; row < gameField.length; row++) {
             for (int col = 0; col < gameField[row].length; col++) {
                 setCellColoredNumber(row, col, gameField[col][row]);
-                System.out.println("[" + row + "," + col + "] " + gameField[row][col] );
             }
         }
     }
@@ -75,4 +77,71 @@ public class Game2048 extends Game {
         }
     }
 
+    private boolean compressRow(int[] row) {
+        boolean flag = false; // flag to determine if we made any swaps
+        for (int i = 0; i < SIDE - 1; i++) {
+            if (row[i] == 0) {
+                for (int j = i + 1; j < SIDE; j++) {
+                    if (row[j] != 0) {
+                        int temp = row[i];
+                        row[i] = row[j];
+                        row[j] = temp;
+                        flag = true;
+                        break;
+                    }
+                }
+                if (row[i] == 0) break; // no more numbers left.
+            }
+        }
+        return flag;
+    }
+
+    private boolean mergeRow(int[] row) {
+        boolean flag = false;
+        for (int i = 0; i < SIDE - 1; i++) {
+            int cell = row[i];
+            if (cell != 0)
+                if (row[i + 1] == cell) {
+                    row[i] += row[i + 1];
+                    row[i + 1] = 0;
+                    i++; // advance again to cut down on time.
+                    flag = true;
+                }
+        }
+        return flag;
+    }
+
+    @Override
+    public void onKeyPress(Key key) {
+        switch (key) {
+            case DOWN:
+                moveDown();
+                break;
+            case LEFT:
+                moveLeft();
+                break;
+            case RIGHT:
+                moveRight();
+                break;
+            case UP:
+                moveUp();
+                break;
+        }
+    }
+
+    private void moveRight() {
+
+    }
+
+    private void moveLeft() {
+
+    }
+
+    private void moveDown() {
+
+    }
+
+    private void moveUp() {
+
+    }
 }//class
