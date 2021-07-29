@@ -3,6 +3,7 @@ package com.codegym.games.game2048;
 import com.codegym.engine.cell.*;
 
 public class Game2048 extends Game {
+    private int score = 0;
     private static final int SIDE = 4;
     private int[][] gameField = new int[SIDE][SIDE]; // Stores the state of the game in a matrix. 0 value = empty cell.
     private boolean isGameStopped = false;
@@ -15,6 +16,9 @@ public class Game2048 extends Game {
     }
 
     private void createGame() {
+        gameField = new int[SIDE][SIDE]; // reset game field.
+        score = 0; // reset score.
+        setScore(score); // display reset score.
         createNewNumber();
         createNewNumber();
     }
@@ -104,6 +108,8 @@ public class Game2048 extends Game {
             int cell = row[i];
             if (cell != 0)
                 if (row[i + 1] == cell) {
+                    score += row[i] + row[i+1];
+                    setScore(score);
                     row[i] += row[i + 1];
                     row[i + 1] = 0;
                     i++; // advance again to cut down on time.
@@ -115,27 +121,33 @@ public class Game2048 extends Game {
 
     @Override
     public void onKeyPress(Key key) {
-        if(!canUserMove()){
-            gameOver();
-            return;
-        }
-        switch (key) {
-            case DOWN:
-                moveDown();
+        if (isGameStopped) { // if the game is stopped, only the space bar can be pressed
+            if (key == Key.SPACE) { // user requested to reset the game.
+                isGameStopped = false;
+                createGame();
                 drawScene();
-                break;
-            case LEFT:
-                moveLeft();
-                drawScene();
-                break;
-            case RIGHT:
-                moveRight();
-                drawScene();
-                break;
-            case UP:
-                moveUp();
-                drawScene();
-                break;
+            }
+        } else if (!canUserMove()) { // check if no moves are available
+            gameOver(); //end game
+        } else {
+            switch (key) {
+                case DOWN:
+                    moveDown();
+                    drawScene();
+                    break;
+                case LEFT:
+                    moveLeft();
+                    drawScene();
+                    break;
+                case RIGHT:
+                    moveRight();
+                    drawScene();
+                    break;
+                case UP:
+                    moveUp();
+                    drawScene();
+                    break;
+            }
         }
     }
 
@@ -202,11 +214,12 @@ public class Game2048 extends Game {
 
     private void win() {
         isGameStopped = true;
-        showMessageDialog(Color.DARKORCHID, "Congratulations, you've won!", Color.BLACK, 30);
+        showMessageDialog(Color.DARKORCHID, "Congratulations, you've won! \nPress space to go again!", Color.BLACK, 30);
     }
-    private void gameOver(){
+
+    private void gameOver() {
         isGameStopped = true;
-        showMessageDialog(Color.DARKGRAY, "Sorry, you lost!", Color.ORANGERED, 30);
+        showMessageDialog(Color.DARKGRAY, "Sorry, you lost! \nPress space to restart.", Color.ORANGERED, 30);
     }
 
     private boolean canUserMove() {
@@ -219,7 +232,7 @@ public class Game2048 extends Game {
                     if (gameField[i][j] == gameField[i][j + 1]) return true;
                 //vertical
                 if (i < SIDE - 1) // make sure not to go out of bounds
-                    if(gameField[i][j] == gameField[i+1][j]) return true;
+                    if (gameField[i][j] == gameField[i + 1][j]) return true;
             }
         }
         return false;
