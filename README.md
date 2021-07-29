@@ -1,13 +1,7 @@
-# Game2048
+## Game2048
 A clone of the popular game '2048', Created as an exercise in Java.
 
-# Controls:
-
-
 <!-- PROJECT SHIELDS -->
-
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 
 
 <!-- TABLE OF CONTENTS -->
@@ -17,6 +11,7 @@ A clone of the popular game '2048', Created as an exercise in Java.
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#Controls">Controls</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -34,9 +29,12 @@ A clone of the popular game '2048', Created as an exercise in Java.
 
 
 
+### Controls
+Arrow keys (UP/DOWN/LEFT/RIGHT) - shift number cells in the corresponding direction.
+Space - Restart the game when it's done.
+
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [CodeGym](https://CodeGym.cc)
 * [IntelliJ](https://www.jetbrains.com/idea/)
 
