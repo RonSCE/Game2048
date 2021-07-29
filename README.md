@@ -23,16 +23,11 @@ A clone of the popular game '2048', Created as an exercise in Java.
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -49,10 +44,6 @@ This section should list any major frameworks that you built your project using.
 
 
 <!-- GETTING STARTED -->
-
-### Prerequisites
-
-
 
 ### Installation
 
@@ -73,7 +64,6 @@ Alternatively, you can run your own version of the game locally using IntelliJ I
 
 <!-- LICENSE -->
 ## License
-
 Distributed under the MIT License. See `LICENSE` for more information.
 
 
@@ -81,11 +71,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
+Ron : [https://www.linkedin.com/in/ron-vayner-607814198]( https://www.linkedin.com/in/ron-vayner-607814198)
 Project Link: [https://github.com/RonSCE/Game2048](https://github.com/RonSCE/Game2048)
-
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-[linkedin-url]: https://www.linkedin.com/in/ron-vayner-607814198
-[product-screenshot]: https://i.imgur.com/nkN99gx.png
